@@ -6,28 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
-}
-
-main {
-  display: flex;
-  flex: 1 0 auto;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 32px;
-}
-
-.add-book {
-  all: unset;
-  background: #cacaca;
-  width: 120px;
-  height: 40px;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.add-book:hover {
-  cursor: pointer;
 }
 
 header {
@@ -37,6 +15,44 @@ header {
   justify-content: center;
   height: 100px;
   box-shadow: 0 -5px 8px #000000;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 32px;
+  gap: 32px;
+}
+
+.add-book {
+  background: #cacaca;
+  width: 120px;
+  height: 40px;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+}
+
+.add-book:hover {
+  cursor: pointer;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  background: #999999;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
 }
 
 footer {
