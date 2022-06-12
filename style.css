@@ -6,6 +6,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 100vh;
 }
 
 header {
@@ -42,8 +43,11 @@ main {
 
 .book-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 32px;
+  min-width: 50vw;
+  max-width: 60vw;
+  margin: 32px;
 }
 
 .book-card {
