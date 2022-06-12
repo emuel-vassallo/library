@@ -27,6 +27,19 @@ const addBookToLibrary = (title, author, pages, isRead) => {
   library = [...library, newBook];
 };
 
+const toggleBookReadStatus = () => {
+  const toggleButtons = document.querySelectorAll(
+    '.book-card > div:last-child > input'
+  );
+  for (let i = 0; i < library.length; i++) {
+    const button = toggleButtons[i];
+    button.addEventListener('click', () => {
+      if (button.checked) library[i].isRead = 'yes';
+      else library[i].isRead = 'no';
+    });
+  }
+};
+
 const displayBooks = () => {
   const bookGrid = document.querySelector('.book-grid');
 
@@ -34,23 +47,40 @@ const displayBooks = () => {
     bookGrid.removeChild(bookGrid.firstChild);
   }
 
-  library.forEach((book) => {
+  for (let i = 0; i < library.length; i++) {
+    const book = library[i];
+    const bookCardContainer = document.createElement('div');
+
     const titleTag = document.createElement('p');
     const authorTag = document.createElement('p');
     const pagesTag = document.createElement('p');
-    const isReadTag = document.createElement('p');
 
-    const bookDivTag = document.createElement('div');
-    bookDivTag.classList.add('book-card');
+    const isReadLabel = document.createElement('label');
+    const isReadCheckbox = document.createElement('input');
+
+    const isBookReadDiv = document.createElement('div');
+
+    isBookReadDiv.append(isReadCheckbox, isReadLabel);
+
+    isReadLabel.textContent = 'Read';
+    isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
+    isReadLabel.setAttribute('name', 'is_book_read');
+
+    isReadCheckbox.type = 'checkbox';
+    isReadCheckbox.id = `book-is-read-checkbox-${i}`;
+
+    if (book.isRead === 'yes') isReadCheckbox.checked = true;
 
     titleTag.textContent = book.title;
     authorTag.textContent = book.author;
-    pagesTag.textContent = book.pages;
-    isReadTag.textContent = book.isRead;
+    pagesTag.textContent = parseInt(book.pages);
 
-    bookDivTag.append(titleTag, authorTag, pagesTag, isReadTag);
-    bookGrid.append(bookDivTag);
-  });
+    bookCardContainer.classList.add('book-card');
+
+    bookCardContainer.append(titleTag, authorTag, pagesTag, isBookReadDiv);
+    bookGrid.append(bookCardContainer);
+  }
+  toggleBookReadStatus();
 };
 
 openModalButton.addEventListener('click', () => {

@@ -61,6 +61,12 @@ main {
   border-radius: 8px;
 }
 
+.book-card > div:last-child {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
 .new-book-modal {
   border: none;
   border-radius: 16px;
