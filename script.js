@@ -1,3 +1,9 @@
+const newBookForm = document.querySelector('.new-book-modal > div > form');
+const newBookModal = document.querySelector('.new-book-modal');
+const openModalButton = document.querySelector('.new-book-modal-button');
+const closeModalButton = document.querySelector('#new-book-close-modal');
+const submitModalButton = document.querySelector('#new-book-modal-submit');
+
 let library = [];
 
 function Book(title, author, pages, isRead) {
@@ -8,8 +14,7 @@ function Book(title, author, pages, isRead) {
 }
 
 const getNewBookModalInfo = () => {
-  const form = document.querySelector('.new-book-modal > div > form');
-  const formData = new FormData(form);
+  const formData = new FormData(newBookForm);
   let dataList = {};
   for (const [key, value] of formData) {
     dataList[key] = value;
@@ -22,7 +27,6 @@ const addBookToLibrary = (title, author, pages, isRead) => {
   library = [...library, newBook];
 };
 
-// TODO: Make this function cleaner and more efficient.
 const displayBooks = () => {
   const bookGrid = document.querySelector('.book-grid');
 
@@ -49,28 +53,26 @@ const displayBooks = () => {
   });
 };
 
-const modal = document.querySelector('.new-book-modal');
-const openModalButton = document.querySelector('.new-book-modal-button');
-const closeModalButton = document.querySelector('#new-book-close-modal');
-const modalSubmitButton = document.querySelector('#new-book-modal-submit');
-
 openModalButton.addEventListener('click', () => {
-  modal.showModal();
+  newBookModal.showModal();
 });
 
 closeModalButton.addEventListener('click', () => {
-  modal.close();
+  newBookModal.close();
 });
 
 const addBookToGrid = () => {
   const newBookInfo = getNewBookModalInfo();
+
   addBookToLibrary(
     newBookInfo.book_title,
     newBookInfo.book_author,
     newBookInfo.book_pages,
     newBookInfo.is_book_read
   );
+
   displayBooks();
+  newBookForm.reset();
 };
 
 addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
