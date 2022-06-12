@@ -19,7 +19,6 @@ const getBookInfoInput = () => {
 const addBookToLibrary = (title, author, pages, isRead) => {
   const newBook = new Book(title, author, pages, isRead);
   library = [...library, newBook];
-  console.table(library);
 };
 
 // TODO: Make this function cleaner and more efficient.
@@ -36,14 +35,30 @@ const displayBooks = () => {
     const pagesTag = document.createElement('p');
     const isReadTag = document.createElement('p');
 
+    const titleSpanTag = document.createElement('span');
+    const authorSpanTag = document.createElement('span');
+    const pagesSpanTag = document.createElement('span');
+    const isReadSpanTag = document.createElement('span');
+
     const bookDiv = document.createElement('div');
-
-    titleTag.textContent = book.title;
-    authorTag.textContent = book.author;
-    pagesTag.textContent = book.pages;
-    isReadTag.textContent = book.isRead;
-
+    
     bookDiv.classList.add('book-card');
+
+    titleTag.textContent = 'Title: ';
+    authorTag.textContent = 'Author: ';
+    pagesTag.textContent = 'Pages: ';
+    isReadTag.textContent = 'Read: ';
+
+    titleSpanTag.textContent = book.title;
+    authorSpanTag.textContent = book.author;
+    pagesSpanTag.textContent = book.pages;
+    isReadSpanTag.textContent = book.isRead;
+
+    titleTag.append(titleSpanTag);
+    authorTag.append(authorSpanTag);
+    pagesTag.append(pagesSpanTag);
+    isReadTag.append(isReadSpanTag);
+
 
     bookDiv.append(titleTag);
     bookDiv.append(authorTag);

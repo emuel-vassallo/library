@@ -29,7 +29,7 @@ main {
 }
 
 .add-book {
-  background: #cacaca;
+  background-color: #cacaca;
   width: 120px;
   height: 40px;
   text-align: center;
@@ -43,10 +43,10 @@ main {
 
 .book-grid {
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  grid-auto-rows: auto;
-  grid-auto-columns: auto;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-auto-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 32px;
   min-width: 50vw;
   max-width: 60vw;
@@ -56,7 +56,7 @@ main {
 .book-card {
   display: flex;
   flex-direction: column;
-  background: #999999;
+  background-color: #999999;
   color: #ffffff;
   padding: 16px;
   border-radius: 8px;
