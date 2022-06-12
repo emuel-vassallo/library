@@ -40,6 +40,18 @@ const toggleBookReadStatus = () => {
   }
 };
 
+const deleteBook = () => {
+  const deleteButtons = document.querySelectorAll('.book-card > span');
+  for (let i = 0; i < library.length; i++) {
+    const button = deleteButtons[i];
+    button.addEventListener('click', () => {
+      library.splice(i, 1);
+      displayBooks();
+      return;
+    });
+  }
+};
+
 const displayBooks = () => {
   const bookGrid = document.querySelector('.book-grid');
 
@@ -58,7 +70,11 @@ const displayBooks = () => {
     const isReadLabel = document.createElement('label');
     const isReadCheckbox = document.createElement('input');
 
+    const deleteButton = document.createElement('span');
+
     const isBookReadDiv = document.createElement('div');
+
+    deleteButton.textContent = '×';
 
     isBookReadDiv.append(isReadCheckbox, isReadLabel);
 
@@ -77,9 +93,16 @@ const displayBooks = () => {
 
     bookCardContainer.classList.add('book-card');
 
-    bookCardContainer.append(titleTag, authorTag, pagesTag, isBookReadDiv);
+    bookCardContainer.append(
+      deleteButton,
+      titleTag,
+      authorTag,
+      pagesTag,
+      isBookReadDiv
+    );
     bookGrid.append(bookCardContainer);
   }
+  deleteBook();
   toggleBookReadStatus();
 };
 
