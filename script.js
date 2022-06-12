@@ -19,20 +19,17 @@ const getBookInfoInput = () => {
 const addBookToLibrary = (title, author, pages, isRead) => {
   const newBook = new Book(title, author, pages, isRead);
   library.push(newBook);
+  console.table(library);
 };
 
-const newBookInfo = getBookInfoInput();
-console.table(newBookInfo);
+const addBookButton = document.querySelector('.add-book');
 
-addBookToLibrary(
-  newBookInfo['title'],
-  newBookInfo['author'],
-  newBookInfo['pages'],
-  newBookInfo['isRead']
-);
-
-
-// addBookToLibrary('Shoe Dog', 'Phil Knight', 400, true);
-// addBookToLibrary('The Shining', 'Stephen King', 497, true);
-
-console.table(library);
+addBookButton.addEventListener('click', () => {
+  const newBookInfo = getBookInfoInput();
+  addBookToLibrary(
+    newBookInfo['title'],
+    newBookInfo['author'],
+    newBookInfo['pages'],
+    newBookInfo['isRead']
+  );
+});
