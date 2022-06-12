@@ -54,6 +54,7 @@ const displayBooks = () => {
 };
 
 openModalButton.addEventListener('click', () => {
+  newBookForm.reset();
   newBookModal.showModal();
 });
 
@@ -63,16 +64,13 @@ closeModalButton.addEventListener('click', () => {
 
 const addBookToGrid = () => {
   const newBookInfo = getNewBookModalInfo();
-
   addBookToLibrary(
     newBookInfo.book_title,
     newBookInfo.book_author,
     newBookInfo.book_pages,
     newBookInfo.is_book_read
   );
-
   displayBooks();
-  newBookForm.reset();
 };
 
 addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
