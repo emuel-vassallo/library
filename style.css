@@ -43,7 +43,10 @@ main {
 
 .book-grid {
   display: grid;
+  grid-template-rows: auto;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-auto-rows: auto;
+  grid-auto-columns: auto;
   gap: 32px;
   min-width: 50vw;
   max-width: 60vw;
