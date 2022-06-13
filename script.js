@@ -90,6 +90,7 @@ const displayBooks = () => {
     const deleteButton = document.createElement('span');
 
     const isBookReadDiv = document.createElement('div');
+    isBookReadDiv.classList.add('book-card-read-container');
 
     titleTag.classList.add('book-card-title');
     authorTag.classList.add('book-card-author');
@@ -160,15 +161,15 @@ const addBookToGrid = () => {
   displayBooks();
 };
 
-// addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
-// addBookToLibrary(
-//   'The Almanack of Naval Ravikant',
-//   'Eric Jorgenson',
-//   241,
-//   'yes'
-// );
-// addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
-// addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
+addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
+addBookToLibrary(
+  'The Almanack of Naval Ravikant',
+  'Eric Jorgenson',
+  241,
+  'yes'
+);
+addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
+addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
 
 displayBooks();
 
@@ -180,3 +181,7 @@ document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
 });
+
+document
+  .getElementById('year')
+  .appendChild(document.createTextNode(new Date().getFullYear()));
