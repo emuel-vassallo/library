@@ -13,43 +13,33 @@
 <body>
   <header>Library</header>
   <main>
-    <dialog class="new-book-modal">
-      <div>
-        <form method="dialog" onsubmit="addBookToGrid()">
-          <fieldset>
-            <legend>New Book</legend>
-            <div>
-              <label for="book-title">Title</label>
-              <input type="text" id="book-title" name="book_title" required />
-            </div>
-            <div>
-              <label for="book-author">Author</label>
-              <input type="text" id="book-author" name="book_author" required />
-            </div>
-            <div>
-              <label for="book-pages">Number of Pages</label>
-              <input type="number" id="book-pages" name="book_pages" min="22" required />
-            </div>
-            <div>
-              <h4>Have you read this book?</h4>
-              <div>
-                <input type="radio" id="book-is-read" name="is_book_read" value="yes" />
-                <label for="book-is-read">Yes</label>
-              </div>
-              <div>
-                <input type="radio" id="book-unread" name="is_book_read" value="no" checked />
-                <label for="book-unread">No</label>
-              </div>
-            </div>
-          </fieldset>
-          <div class="modal-buttons">
-            <button id="new-book-modal-submit" type="submit">Add book</button>
-            <button id="new-book-close-modal" type="button">Cancel</button>
+    <div class="new-book-modal">
+      <form class="new-book-form" onsubmit="addBookToGrid(); return false;">
+        <div>
+          <label for="book-title">Title</label>
+          <input type="text" id="book-title" name="book_title" required />
+        </div>
+        <div>
+          <label for="book-author">Author</label>
+          <input type="text" id="book-author" name="book_author" required />
+        </div>
+        <div>
+          <label for="book-pages">Number of Pages</label>
+          <input type="number" id="book-pages" name="book_pages" min="22" required />
+        </div>
+        <div>
+          <div>
+            <input type="checkbox" id="book-is-read" name="is_book_read" value="yes" />
+            <label for="book-is-read">I have read this book.</label>
           </div>
-      </div>
+        </div>
+        <div class="modal-buttons">
+          <button id="new-book-form-submit" type="submit">Add book</button>
+          <button id="new-book-close-modal" type="button">Cancel</button>
+        </div>
       </form>
-    </dialog>
-    <button class="new-book-modal-button">Add a Book</button>
+    </div>
+    <button class="new-book-modal-trigger">Add a Book</button>
     <div class="book-grid"></div>
   </main>
   <footer>

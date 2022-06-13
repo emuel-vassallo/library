@@ -28,7 +28,63 @@ main {
   gap: 32px;
 }
 
-.new-book-modal-button {
+/* Modal */
+
+.new-book-modal {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.new-book-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 26px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  width: 310px;
+  height: 290px;
+}
+
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100vw;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.new-book-form > div:not(:last-child) {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.new-book-modal-trigger {
   background-color: #cacaca;
   width: 120px;
   height: 40px;
@@ -37,20 +93,23 @@ main {
   border: none;
 }
 
-.new-book-modal-button:hover {
+.new-book-modal-trigger:hover {
   cursor: pointer;
 }
 
+/* Book Grid */
+
 .book-grid {
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   grid-auto-rows: 1fr;
   gap: 32px;
-  min-width: 50vw;
   max-width: 60vw;
   margin: 32px;
 }
+
+/* Book Card */
 
 .book-card {
   display: flex;
@@ -73,45 +132,7 @@ main {
   align-items: center;
 }
 
-.new-book-modal {
-  border: none;
-  border-radius: 16px;
-  min-width: 30vw;
-}
-
-.new-book-modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-.new-book-modal > div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 26px;
-}
-
-.new-book-modal > div > form {
-  width: 100%;
-}
-
-.new-book-modal > div > form > fieldset {
-  border: unset;
-  padding: 0;
-  margin: 0;
-}
-
-.new-book-modal > div > form > fieldset > div {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 8px;
-  justify-content: end;
-}
+/* Footer */
 
 footer {
   display: flex;

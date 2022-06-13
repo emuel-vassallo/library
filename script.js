@@ -1,8 +1,8 @@
-const newBookForm = document.querySelector('.new-book-modal > div > form');
 const newBookModal = document.querySelector('.new-book-modal');
-const openModalButton = document.querySelector('.new-book-modal-button');
+const newBookForm = document.querySelector('.new-book-form');
+const submitFormButton = document.querySelector('#new-book-form-submit');
+const openModalButton = document.querySelector('.new-book-modal-trigger');
 const closeModalButton = document.querySelector('#new-book-close-modal');
-const submitModalButton = document.querySelector('#new-book-modal-submit');
 
 let library = [];
 
@@ -78,14 +78,16 @@ const displayBooks = () => {
 
     isBookReadDiv.append(isReadCheckbox, isReadLabel);
 
-    isReadLabel.textContent = 'Read';
     isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
     isReadLabel.setAttribute('name', 'is_book_read');
 
     isReadCheckbox.type = 'checkbox';
     isReadCheckbox.id = `book-is-read-checkbox-${i}`;
 
-    if (book.isRead === 'yes') isReadCheckbox.checked = true;
+    if (book.isRead === 'yes') {
+      isReadCheckbox.checked = true;
+      isReadLabel.textContent = 'Read';
+    } else isReadLabel.textContent = 'Read';
 
     titleTag.textContent = book.title;
     authorTag.textContent = book.author;
@@ -106,14 +108,19 @@ const displayBooks = () => {
   toggleBookReadStatus();
 };
 
-openModalButton.addEventListener('click', () => {
+const toggleModal = () => {
   newBookForm.reset();
-  newBookModal.showModal();
-});
+  document.body.classList.toggle('modal-open');
+  newBookModal.classList.toggle('show-modal');
+};
 
-closeModalButton.addEventListener('click', () => {
-  newBookModal.close();
-});
+const windowOnClick = (e) => {
+  if (e.target === newBookModal) toggleModal();
+};
+
+const keyboardKeyPress = (e) => {
+  if (e.key === 'Escape') toggleModal();
+};
 
 const addBookToGrid = () => {
   const newBookInfo = getNewBookModalInfo();
@@ -124,6 +131,7 @@ const addBookToGrid = () => {
     newBookInfo.is_book_read
   );
   displayBooks();
+  toggleModal();
 };
 
 addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
@@ -137,3 +145,12 @@ addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
 addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
 
 displayBooks();
+
+openModalButton.addEventListener('click', () => toggleModal());
+window.addEventListener('click', windowOnClick);
+closeModalButton.addEventListener('click', () => toggleModal());
+
+document.body.addEventListener('keydown', (e) => {
+  if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
+    toggleModal();
+});
