@@ -1,5 +1,6 @@
 :root {
   --color: #000000;
+  --grey-color: #a4a4a4;
   --background-color: #f0f0f0;
   --border-radius: 11px;
   --form-background-color: #ffffff;
@@ -40,7 +41,7 @@ header {
   align-items: center;
   justify-content: center;
   height: 100px;
-  box-shadow: 0 -5px 8px #000000;
+  border-bottom: 1px solid var(--grey-color);
   font-weight: 600;
 }
 
@@ -283,9 +284,10 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid var(--grey-color);
 }
 
 footer a {
-  color: #505050;
+  color: var(--book-card-grey-color);
   text-decoration: none;
 }
