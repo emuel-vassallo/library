@@ -1,20 +1,22 @@
 :root {
+  --color: #000000;
   --background-color: #f0f0f0;
   --border-radius: 11px;
   --form-background-color: #ffffff;
   --form-input-background-color: #f6f6f6;
   --form-input-focus-outline: 1px solid #dadada;
-  --form-submit-background-color: #000000;
   --form-submit-color: #ffffff;
-  --form-submit-hover-background-color: #181818;
-  --form-submit-active-background-color: #232323;
-  --form-close-background-color: #ffffff;
+  --form-submit-background-color: #000000;
+  --form-submit-hover-background-color: #2b2a2a;
+  --form-submit-active-background-color: #3f3f3f;
   --form-close-color: #000000;
+  --form-close-background-color: #ffffff;
   --form-close-border: 1px solid #cfcfcf;
   --form-close-hover-background-color: #f6f6f6;
-  --form-close-active-background-color: #efefef;
-  --book-card-background-color: #ffffff;
+  --form-close-active-background-color: #ededed;
   --book-card-color: #000000;
+  --book-card-background-color: #ffffff;
+  --book-card-grey-color: #505050;
 }
 
 body {
@@ -27,6 +29,7 @@ body {
   justify-content: space-between;
   min-height: 100vh;
   background-color: var(--background-color);
+  color: var(--color);
 }
 
 header {
@@ -46,11 +49,19 @@ main {
   align-items: center;
   justify-content: flex-start;
   padding: 36px;
-  gap: 32px;
+  gap: 36px;
 }
 
-main > h1 {
-  margin: 24px 0 0 0;
+.books {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.books > h1 {
+  margin: 18px 0 0 0;
 }
 
 /* Modal */
@@ -130,13 +141,26 @@ main > h1 {
 }
 
 .add-book-button {
-  background-color: #cacaca;
-  width: 120px;
-  height: 40px;
-  text-align: center;
-  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 48px;
+  padding: 0 1.2rem;
+  font-size: 1.09rem;
   border: none;
+  border-radius: var(--border-radius);
+  color: var(--form-submit-color);
+  background-color: var(--form-submit-background-color);
   cursor: pointer;
+}
+
+.add-book-button:hover {
+  background-color: var(--form-submit-hover-background-color);
+}
+
+.add-book-button:active {
+  background-color: var(--form-submit-active-background-color);
 }
 
 .modal-buttons {
@@ -193,7 +217,7 @@ main > h1 {
 .book-grid {
   display: grid;
   grid-template-rows: repeat(auto-fill, minmax(280px, 1fr));
-  grid-template-columns: repeat(auto-fill, 220px);
+  grid-template-columns: repeat(auto-fill, 226px);
   grid-auto-rows: 1fr;
   gap: 32px;
   max-width: 60vw;
@@ -220,6 +244,7 @@ main > h1 {
   cursor: pointer;
   align-self: flex-end;
   font-size: 1.2rem;
+  color: var(--book-card-grey-color);
 }
 
 .book-card > p {
@@ -227,12 +252,12 @@ main > h1 {
 }
 
 .book-card-title {
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 600;
 }
 
 .book-card-pages {
-  color: #454545;
+  color: var(--book-card-grey-color);
   font-size: 0.9rem;
 }
 

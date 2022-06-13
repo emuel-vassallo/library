@@ -12,7 +12,7 @@ const getRandomColor = () =>
   ',' +
   (10 + 15 * Math.random()) +
   '%,' +
-  (78 + 10 * Math.random()) +
+  (76 + 10 * Math.random()) +
   '%)';
 
 function Book(title, author, pages, isRead) {
@@ -141,7 +141,6 @@ const keyboardKeyPress = (e) => {
 
 const addBookToGrid = () => {
   const newBookInfo = getNewBookModalInfo();
-  console.log(newBookInfo);
   addBookToLibrary(
     newBookInfo.book_title,
     newBookInfo.book_author,
