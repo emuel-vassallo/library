@@ -3,6 +3,8 @@ const newBookForm = document.querySelector('.new-book-form');
 const submitFormButton = document.querySelector('#new-book-form-submit');
 const openModalButton = document.querySelector('.add-book-button');
 const closeModalButton = document.querySelector('#new-book-close-modal');
+const noBooksTag = document.querySelector('.empty-library');
+const bookGrid = document.querySelector('.book-grid');
 
 let library = [];
 
@@ -63,9 +65,13 @@ const deleteBook = () => {
   }
 };
 
-const displayBooks = () => {
-  const bookGrid = document.querySelector('.book-grid');
+const toggleEmptyLibraryMessage = () => {
+  const bookCardElements = document.getElementsByClassName('book-card');
+  if (bookCardElements.length > 0) noBooksTag.classList.add('hidden');
+  else noBooksTag.classList.remove('hidden');
+};
 
+const displayBooks = () => {
   while (bookGrid.firstChild) {
     bookGrid.removeChild(bookGrid.firstChild);
   }
@@ -124,6 +130,8 @@ const displayBooks = () => {
   }
   deleteBook();
   toggleBookReadStatus();
+
+  toggleEmptyLibraryMessage();
 };
 
 const toggleModal = () => {
@@ -152,15 +160,15 @@ const addBookToGrid = () => {
   displayBooks();
 };
 
-addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
-addBookToLibrary(
-  'The Almanack of Naval Ravikant',
-  'Eric Jorgenson',
-  241,
-  'yes'
-);
-addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
-addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
+// addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
+// addBookToLibrary(
+//   'The Almanack of Naval Ravikant',
+//   'Eric Jorgenson',
+//   241,
+//   'yes'
+// );
+// addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
+// addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
 
 displayBooks();
 
