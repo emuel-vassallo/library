@@ -3,8 +3,9 @@
   --grey-color: #a4a4a4;
   --background-color: #f0f0f0;
   --border-radius: 11px;
-  --form-background-color: #ffffff;
-  --form-input-background-color: #f6f6f6;
+  --form-background-color: #f0f0f0;
+  --form-input-background-color: #e3e3e3;
+  --form-input-placeholder-color: #808080;
   --form-input-focus-outline: 1px solid #dadada;
   --form-submit-color: #ffffff;
   --form-submit-background-color: #000000;
@@ -20,6 +21,7 @@
   --border-divider: 1px solid var(--grey-color);
   --read-status-checked-background: #8c977d;
   --read-status-unchecked-background: #e8e3e3;
+  --read-status-unchecked-border: 1px solid #b0b0b0;
 }
 
 body {
@@ -141,6 +143,10 @@ main {
   font-size: 0.9rem;
 }
 
+.new-book-form > div > input::placeholder {
+  color: var(--form-input-placeholder-color);
+}
+
 .new-book-form > div > input:focus {
   outline: var(--form-input-focus-outline);
 }
@@ -246,6 +252,10 @@ main {
   gap: 16px;
 }
 
+.new-book-card {
+  animation: pop 0.5s;
+}
+
 .book-card-delete {
   display: flex;
   justify-content: end;
@@ -320,6 +330,7 @@ main {
   width: 1.3em;
   height: 1.3em;
   background-color: var(--read-status-unchecked-background);
+  border: var(--read-status-unchecked-border);
   transition: all 0.3s;
 }
 
