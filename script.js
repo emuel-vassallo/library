@@ -6,11 +6,21 @@ const closeModalButton = document.querySelector('#new-book-close-modal');
 
 let library = [];
 
+const getRandomColor = () =>
+  'hsl(' +
+  360 * Math.random() +
+  ',' +
+  (10 + 15 * Math.random()) +
+  '%,' +
+  (78 + 10 * Math.random()) +
+  '%)';
+
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
+  this.color = getRandomColor();
 }
 
 const getNewBookModalInfo = () => {
@@ -22,17 +32,14 @@ const getNewBookModalInfo = () => {
   return dataList;
 };
 
-const addBookToLibrary = (title, author, pages, isRead) => {
-  const newBook = new Book(title, author, pages, isRead);
+const addBookToLibrary = (title, author, pages, isRead, color) => {
+  const newBook = new Book(title, author, pages, isRead, color);
   library = [...library, newBook];
 };
 
 const toggleBookReadStatus = () => {
   const toggleButtons = document.querySelectorAll(
     '.book-card > div:last-child > input'
-  );
-  const readStatusLabels = document.querySelectorAll(
-    '.book-card > div:last-child > label'
   );
 
   for (let i = 0; i < library.length; i++) {
@@ -55,15 +62,6 @@ const deleteBook = () => {
     });
   }
 };
-
-const getRandomColor = () =>
-  'hsl(' +
-  360 * Math.random() +
-  ',' +
-  (10 + 10 * Math.random()) +
-  '%,' +
-  (80 + 10 * Math.random()) +
-  '%)';
 
 const displayBooks = () => {
   const bookGrid = document.querySelector('.book-grid');
@@ -92,8 +90,9 @@ const displayBooks = () => {
     pagesTag.classList.add('book-card-pages');
     isReadLabel.classList.add('book-card-status');
     deleteButton.classList.add('book-card-delete');
+    deleteButton.classList.add('material-symbols-rounded');
 
-    deleteButton.textContent = '×';
+    deleteButton.textContent = 'delete';
 
     isBookReadDiv.append(isReadCheckbox, isReadLabel);
 
@@ -111,7 +110,8 @@ const displayBooks = () => {
     pagesTag.textContent = `${parseInt(book.pages)} pages`;
 
     bookCardContainer.classList.add('book-card');
-    bookCardContainer.style.backgroundColor = getRandomColor();
+
+    bookCardContainer.style.backgroundColor = book.color;
 
     bookCardContainer.append(
       deleteButton,
@@ -141,11 +141,13 @@ const keyboardKeyPress = (e) => {
 
 const addBookToGrid = () => {
   const newBookInfo = getNewBookModalInfo();
+  console.log(newBookInfo);
   addBookToLibrary(
     newBookInfo.book_title,
     newBookInfo.book_author,
     newBookInfo.book_pages,
-    newBookInfo.is_book_read
+    newBookInfo.is_book_read,
+    newBookInfo.color
   );
   toggleModal();
   displayBooks();

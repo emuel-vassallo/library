@@ -217,8 +217,6 @@ main > h1 {
 .book-card-delete {
   display: flex;
   justify-content: end;
-  width: 12px;
-  height: 16px;
   cursor: pointer;
   align-self: flex-end;
   font-size: 1.2rem;
