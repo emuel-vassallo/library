@@ -9,17 +9,14 @@
   --form-submit-color: #ffffff;
   --form-submit-background-color: #000000;
   --form-submit-hover-background-color: #2b2a2a;
-  --form-submit-active-background-color: #3f3f3f;
   --form-close-color: #000000;
   --form-close-background-color: #ffffff;
   --form-close-border: 1px solid #cfcfcf;
   --form-close-hover-background-color: #f6f6f6;
-  --form-close-active-background-color: #ededed;
   --book-card-color: #000000;
   --book-card-background-color: #ffffff;
   --book-card-grey-color: #505050;
   --delete-symbol-hover-background-color: #656565;
-  --delete-symbol-active-background-color: #767676;
 }
 
 body {
@@ -162,10 +159,6 @@ main {
   background-color: var(--form-submit-hover-background-color);
 }
 
-.add-book-button:active {
-  background-color: var(--form-submit-active-background-color);
-}
-
 .modal-buttons {
   height: 42px;
   display: flex;
@@ -206,15 +199,6 @@ main {
   background-color: var(--form-close-hover-background-color);
 }
 
-#new-book-form-submit:active {
-  background-color: #323232;
-  background-color: var(--form-submit-active-background-color);
-}
-
-#new-book-close-modal:active {
-  background-color: var(--form-close-active-background-color);
-}
-
 /* Book Grid */
 
 .book-grid {
@@ -252,10 +236,6 @@ main {
 
 .book-card-delete:hover {
   color: var(--delete-symbol-hover-background-color);
-}
-
-.book-card-delete:active {
-  color: var(--delete-symbol-active-background-color);
 }
 
 .book-card > p {
