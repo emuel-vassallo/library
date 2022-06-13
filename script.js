@@ -90,7 +90,10 @@ const displayBooks = () => {
     const deleteButton = document.createElement('span');
 
     const isBookReadDiv = document.createElement('div');
+    const checkmarkDiv = document.createElement('div');
+
     isBookReadDiv.classList.add('book-card-read-container');
+    checkmarkDiv.classList.add('book-card-read-checkbox');
 
     titleTag.classList.add('book-card-title');
     authorTag.classList.add('book-card-author');
@@ -101,7 +104,7 @@ const displayBooks = () => {
 
     deleteButton.textContent = 'delete';
 
-    isBookReadDiv.append(isReadCheckbox, isReadLabel);
+    isBookReadDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
 
     isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
     isReadLabel.setAttribute('name', 'is_book_read');
@@ -109,6 +112,7 @@ const displayBooks = () => {
     isReadLabel.textContent = 'Read';
     isReadCheckbox.type = 'checkbox';
     isReadCheckbox.id = `book-is-read-checkbox-${i}`;
+    isReadCheckbox.classList.add('book-is-read-checkbox');
 
     if (book.isRead === 'yes') isReadCheckbox.checked = true;
 
@@ -161,15 +165,15 @@ const addBookToGrid = () => {
   displayBooks();
 };
 
-addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
+addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
+addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
 addBookToLibrary(
   'The Almanack of Naval Ravikant',
   'Eric Jorgenson',
   241,
   'yes'
 );
-addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
-addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
+addBookToLibrary('Essentialism', 'Greg McKeown', 260, 'no');
 
 displayBooks();
 
