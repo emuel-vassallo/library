@@ -1,7 +1,7 @@
 const newBookModal = document.querySelector('.new-book-modal');
 const newBookForm = document.querySelector('.new-book-form');
 const submitFormButton = document.querySelector('#new-book-form-submit');
-const openModalButton = document.querySelector('.new-book-modal-trigger');
+const openModalButton = document.querySelector('.add-book-button');
 const closeModalButton = document.querySelector('#new-book-close-modal');
 
 let library = [];
@@ -56,6 +56,15 @@ const deleteBook = () => {
   }
 };
 
+const getRandomColor = () =>
+  'hsl(' +
+  360 * Math.random() +
+  ',' +
+  (10 + 10 * Math.random()) +
+  '%,' +
+  (80 + 10 * Math.random()) +
+  '%)';
+
 const displayBooks = () => {
   const bookGrid = document.querySelector('.book-grid');
 
@@ -78,6 +87,12 @@ const displayBooks = () => {
 
     const isBookReadDiv = document.createElement('div');
 
+    titleTag.classList.add('book-card-title');
+    authorTag.classList.add('book-card-author');
+    pagesTag.classList.add('book-card-pages');
+    isReadLabel.classList.add('book-card-status');
+    deleteButton.classList.add('book-card-delete');
+
     deleteButton.textContent = '×';
 
     isBookReadDiv.append(isReadCheckbox, isReadLabel);
@@ -92,10 +107,11 @@ const displayBooks = () => {
     if (book.isRead === 'yes') isReadCheckbox.checked = true;
 
     titleTag.textContent = book.title;
-    authorTag.textContent = book.author;
-    pagesTag.textContent = parseInt(book.pages);
+    authorTag.textContent = `by ${book.author}`;
+    pagesTag.textContent = `${parseInt(book.pages)} pages`;
 
     bookCardContainer.classList.add('book-card');
+    bookCardContainer.style.backgroundColor = getRandomColor();
 
     bookCardContainer.append(
       deleteButton,
@@ -131,8 +147,8 @@ const addBookToGrid = () => {
     newBookInfo.book_pages,
     newBookInfo.is_book_read
   );
-  displayBooks();
   toggleModal();
+  displayBooks();
 };
 
 addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
@@ -148,9 +164,9 @@ addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
 displayBooks();
 
 openModalButton.addEventListener('click', () => toggleModal());
-window.addEventListener('click', windowOnClick);
 closeModalButton.addEventListener('click', () => toggleModal());
 
+window.addEventListener('click', windowOnClick);
 document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
