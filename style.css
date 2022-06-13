@@ -17,6 +17,8 @@
   --book-card-color: #000000;
   --book-card-background-color: #ffffff;
   --book-card-grey-color: #505050;
+  --delete-symbol-hover-background-color: #656565;
+  --delete-symbol-active-background-color: #767676;
 }
 
 body {
@@ -245,6 +247,14 @@ main {
   align-self: flex-end;
   font-size: 1.2rem;
   color: var(--book-card-grey-color);
+}
+
+.book-card-delete:hover {
+  color: var(--delete-symbol-hover-background-color);
+}
+
+.book-card-delete:active {
+  color: var(--delete-symbol-active-background-color);
 }
 
 .book-card > p {
