@@ -31,11 +31,21 @@ const toggleBookReadStatus = () => {
   const toggleButtons = document.querySelectorAll(
     '.book-card > div:last-child > input'
   );
+  const readStatusLabels = document.querySelectorAll(
+    '.book-card > div:last-child > label'
+  );
+
   for (let i = 0; i < library.length; i++) {
     const button = toggleButtons[i];
+    const label = readStatusLabels[i];
     button.addEventListener('click', () => {
-      if (button.checked) library[i].isRead = 'yes';
-      else library[i].isRead = 'no';
+      if (button.checked) {
+        library[i].isRead = 'yes';
+        label.textContent = 'Read';
+      } else {
+        library[i].isRead = 'no';
+        label.textContent = 'Unread';
+      }
     });
   }
 };
@@ -87,7 +97,7 @@ const displayBooks = () => {
     if (book.isRead === 'yes') {
       isReadCheckbox.checked = true;
       isReadLabel.textContent = 'Read';
-    } else isReadLabel.textContent = 'Read';
+    } else isReadLabel.textContent = 'Unread';
 
     titleTag.textContent = book.title;
     authorTag.textContent = book.author;
