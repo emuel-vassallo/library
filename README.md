@@ -21,10 +21,10 @@ A simple library app created as part of The Odin Project's [curriculum](https://
 ## Lessons Learned
 
 - Appending a container with elements using JavaScript
-- Using object constructors and creating instances with it
-- Removing an item from a grid when clicking a button
 - Getting a random pastel color and assign it to each book instance
+- Removing an item from a grid when clicking a button
 - Using form data to create an element that includes it (book)
+- Using object constructors and creating instances with it
 
 ## Inspired by...
 
