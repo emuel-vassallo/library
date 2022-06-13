@@ -37,15 +37,9 @@ const toggleBookReadStatus = () => {
 
   for (let i = 0; i < library.length; i++) {
     const button = toggleButtons[i];
-    const label = readStatusLabels[i];
     button.addEventListener('click', () => {
-      if (button.checked) {
-        library[i].isRead = 'yes';
-        label.textContent = 'Read';
-      } else {
-        library[i].isRead = 'no';
-        label.textContent = 'Unread';
-      }
+      if (button.checked) library[i].isRead = 'yes';
+      else library[i].isRead = 'no';
     });
   }
 };
@@ -91,13 +85,11 @@ const displayBooks = () => {
     isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
     isReadLabel.setAttribute('name', 'is_book_read');
 
+    isReadLabel.textContent = 'Read';
     isReadCheckbox.type = 'checkbox';
     isReadCheckbox.id = `book-is-read-checkbox-${i}`;
 
-    if (book.isRead === 'yes') {
-      isReadCheckbox.checked = true;
-      isReadLabel.textContent = 'Read';
-    } else isReadLabel.textContent = 'Unread';
+    if (book.isRead === 'yes') isReadCheckbox.checked = true;
 
     titleTag.textContent = book.title;
     authorTag.textContent = book.author;
@@ -120,7 +112,6 @@ const displayBooks = () => {
 
 const toggleModal = () => {
   newBookForm.reset();
-  document.body.classList.toggle('modal-open');
   newBookModal.classList.toggle('show-modal');
 };
 
