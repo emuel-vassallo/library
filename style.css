@@ -5,7 +5,7 @@
   --border-radius: 11px;
   --form-background-color: #f0f0f0;
   --form-input-background-color: #e3e3e3;
-  --form-input-placeholder-color: #808080;
+  --form-input-placeholder-color: #545454;
   --form-input-focus-outline: 1px solid #dadada;
   --form-submit-color: #ffffff;
   --form-submit-background-color: #000000;
@@ -16,7 +16,7 @@
   --form-close-hover-background-color: #f6f6f6;
   --book-card-color: #000000;
   --book-card-background-color: #ffffff;
-  --book-card-grey-color: #505050;
+  --book-card-grey-color: #424242;
   --book-card-border: rgba(0, 0, 0, 0.1) 1px solid;
   --book-card-border-hover: #000000 1px solid;
   --delete-symbol-hover-background-color: #656565;
@@ -24,7 +24,10 @@
   --read-status-checked-background: #121212;
   --read-status-checked-border: 1px solid var(--read-status-checked-background);
   --read-status-unchecked-background: #e8e3e3;
-  --read-status-unchecked-border: 1px solid #b0b0b0;
+  --read-status-unchecked-border: 1px solid #adadad;
+  --add-demo-books-background: #f0f0f0;
+  --add-demo-books-color: #656565;
+  --add-demo-books-background-hover: #dfdfdf;
 }
 
 body {
@@ -170,25 +173,43 @@ main {
   height: 20px;
 }
 
+.add-book-buttons {
+  display: flex;
+  gap: 16px;
+  height: 48px;
+}
+
+.add-book {
+  background-color: var(--form-submit-background-color);
+  color: var(--form-submit-color);
+  font-size: 1rem;
+  border: none;
+}
+
+.add-book:hover {
+  background-color: var(--form-submit-hover-background-color);
+}
+
+.add-demo-books {
+  background-color: var(--add-demo-books-background);
+  color: var(--add-demo-books-color);
+  font-size: 1rem;
+  border: 1px solid #a4a4a4;
+}
+
+.add-demo-books:hover {
+  background-color: var(--add-demo-books-background-hover);
+}
+
 .add-book-button {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
-  height: 48px;
-  padding: 0 1.2rem;
-  font-size: 1.09rem;
-  border: none;
+  padding: 0 16px;
   border-radius: var(--border-radius);
-  color: var(--form-submit-color);
-  background-color: var(--form-submit-background-color);
   cursor: pointer;
 }
-
-.add-book-button:hover {
-  background-color: var(--form-submit-hover-background-color);
-}
-
 .modal-buttons {
   height: 42px;
   display: flex;

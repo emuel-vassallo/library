@@ -5,24 +5,21 @@ const openModalButton = document.querySelector('.add-book-button');
 const closeModalButton = document.querySelector('#new-book-close-modal');
 const noBooksTag = document.querySelector('.empty-library');
 const bookGrid = document.querySelector('.book-grid');
+const demoBooksButton = document.querySelector('.add-demo-books');
 
 let library = [];
 
-const getRandomColor = () =>
-  'hsl(' +
-  360 * Math.random() +
-  ',' +
-  (4 + 9 * Math.random()) +
-  '%,' +
-  (76 + 10 * Math.random()) +
-  '%)';
+const getRandomHslColor = () =>
+  `hsl( ${360 * Math.random()}, ${6 + 12 * Math.random()}%, ${
+    79 + 10 * Math.random()
+  }%)`;
 
 function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.isRead = isRead;
-  this.color = getRandomColor();
+  this.color = getRandomHslColor();
 }
 
 const getNewBookModalInfo = () => {
@@ -159,21 +156,22 @@ document
   .getElementById('year')
   .appendChild(document.createTextNode(new Date().getFullYear()));
 
-addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
-addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
-addBookToLibrary(
-  'The Almanack of Naval Ravikant',
-  'Eric Jorgenson',
-  241,
-  'yes'
-);
-addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
-addBookToLibrary('17 Church Row', 'James Carol', 407, 'yes');
-addBookToLibrary('Essentialism', 'Greg McKeown', 260, 'no');
-addBookToLibrary('The Psychology of Money', 'Morgan Housel', 241, 'yes');
-addBookToLibrary("Can't Hurt Me", 'David Goggins', 358, 'no');
+const addDemoBooksToLibrary = () => {
+  addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
+  addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
+  addBookToLibrary(
+    'The Almanack of Naval Ravikant',
+    'Eric Jorgenson',
+    241,
+    'yes'
+  );
+  addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
+};
 
-displayBooks();
+demoBooksButton.addEventListener('click', () => {
+  addDemoBooksToLibrary();
+  displayBooks();
+});
 
 openModalButton.addEventListener('click', () => toggleModal());
 closeModalButton.addEventListener('click', () => toggleModal());
@@ -183,3 +181,5 @@ document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
 });
+
+displayBooks();
