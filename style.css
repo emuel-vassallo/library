@@ -251,17 +251,16 @@ main {
   align-items: center;
   text-align: center;
   gap: 16px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.26s;
 }
 
 .book-card:hover {
-  transform: scale(0.98);
-  transition: all 0.3s ease-in-out;
+  filter: brightness(1.025);
+  transition: all 0.26s;
 }
 
 .book-card-delete {
   display: flex;
-  justify-content: end;
   cursor: pointer;
   align-self: flex-end;
   font-size: 1.2rem;
@@ -289,7 +288,7 @@ main {
 }
 
 .book-card-title {
-  font-size: 1.4rem;
+  font-size: 1.42rem;
   font-weight: 600;
 }
 
@@ -315,6 +314,7 @@ main {
 
 .book-card-status {
   grid-column: 2;
+  cursor: pointer;
 }
 
 .book-card-read-container {
