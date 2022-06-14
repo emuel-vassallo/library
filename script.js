@@ -12,7 +12,7 @@ const getRandomColor = () =>
   'hsl(' +
   360 * Math.random() +
   ',' +
-  (7 + 10 * Math.random()) +
+  (4 + 9 * Math.random()) +
   '%,' +
   (76 + 10 * Math.random()) +
   '%)';

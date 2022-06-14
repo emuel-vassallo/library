@@ -17,6 +17,8 @@
   --book-card-color: #000000;
   --book-card-background-color: #ffffff;
   --book-card-grey-color: #505050;
+  --book-card-border: rgba(0, 0, 0, 0.1) 1px solid;
+  --book-card-border-hover: #000000 1px solid;
   --delete-symbol-hover-background-color: #656565;
   --border-divider: 1px solid var(--grey-color);
   --read-status-checked-background: #121212;
@@ -250,14 +252,12 @@ main {
   align-items: center;
   text-align: center;
   gap: 16px;
-  transition: 0.3s ease-out;
-  outline: var(--border-divider);
+  transition: border 0.3s;
+  border: var(--book-card-border);
 }
 
 .book-card:hover {
-  position: relative;
-  transform: translateY(-1%);
-  transition: 0.3s ease-out;
+  border: var(--book-card-border-hover);
 }
 
 .book-card-delete {
@@ -323,6 +323,7 @@ main {
   display: block;
   position: relative;
   user-select: none;
+  align-items: center;
 }
 
 .book-card-read-container input,
