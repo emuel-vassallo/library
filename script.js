@@ -12,7 +12,7 @@ const getRandomColor = () =>
   'hsl(' +
   360 * Math.random() +
   ',' +
-  (8 + 15 * Math.random()) +
+  (7 + 10 * Math.random()) +
   '%,' +
   (76 + 10 * Math.random()) +
   '%)';
@@ -167,7 +167,11 @@ addBookToLibrary(
   241,
   'yes'
 );
+addBookToLibrary('Shoe Dog', 'Phil Knight', 400, 'yes');
+addBookToLibrary('17 Church Row', 'James Carol', 407, 'yes');
 addBookToLibrary('Essentialism', 'Greg McKeown', 260, 'no');
+addBookToLibrary('The Psychology of Money', 'Morgan Housel', 241, 'yes');
+addBookToLibrary("Can't Hurt Me", 'David Goggins', 358, 'no');
 
 displayBooks();
 
