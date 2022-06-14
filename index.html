@@ -13,7 +13,13 @@
 
 <body>
   <div class="overlay"></div>
-  <header>Library</header>
+  <header>
+    <h1>Library</h1>
+    <label class="switch" title="Toggle dark theme">
+      <input type="checkbox" checked="unchecked" />
+      <span class="slider"></span>
+    </label>
+  </header>
   <main>
     <div class="new-book-modal">
       <form class="new-book-form" onsubmit="addBookToGrid(); return false;">
@@ -56,7 +62,10 @@
       <h1>Your Books</h1>
       <div class="empty-library">
         <h2>There are no books in your library!</h2>
-          <p>Click the "Add book" button to add a book, or the "Add demo books" button to add four demo books.</p>
+        <p>
+          Click the "Add book" button to add a book, or the "Add demo books"
+          button to add four demo books.
+        </p>
       </div>
       <div class="book-grid"></div>
     </div>

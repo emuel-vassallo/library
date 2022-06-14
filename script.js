@@ -6,12 +6,14 @@ const closeModalButton = document.querySelector('#new-book-close-modal');
 const noBooksTag = document.querySelector('.empty-library');
 const bookGrid = document.querySelector('.book-grid');
 const demoBooksButton = document.querySelector('.add-demo-books');
+const themeToggleSlider = document.querySelector('.slider');
+const themeToggleCheckbox = document.querySelector('.switch input');
 
 let library = [];
 
 const getRandomHslColor = () =>
   `hsl( ${360 * Math.random()}, ${6 + 12 * Math.random()}%, ${
-    79 + 10 * Math.random()
+    72 + 10 * Math.random()
   }%)`;
 
 function Book(title, author, pages, isRead) {
@@ -181,5 +183,12 @@ document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
 });
+
+themeToggleSlider.addEventListener('click', () =>
+  document.body.classList.toggle('dark-theme')
+);
+
+if (themeToggleCheckbox.checked) document.body.classList.add('dark-theme');
+else document.body.classList.remove('dark-theme');
 
 displayBooks();
