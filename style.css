@@ -1,5 +1,5 @@
 :root {
-  --color: #000000;
+  --color: #f0f0f0f;
   --grey-color: #a4a4a4;
   --background-color: #f0f0f0;
   --border-radius: 11px;
@@ -19,7 +19,8 @@
   --book-card-grey-color: #505050;
   --delete-symbol-hover-background-color: #656565;
   --border-divider: 1px solid var(--grey-color);
-  --read-status-checked-background: #8c977d;
+  --read-status-checked-background: #121212;
+  --read-status-checked-border: 1px solid var(--read-status-checked-background);
   --read-status-unchecked-background: #e8e3e3;
   --read-status-unchecked-border: 1px solid #b0b0b0;
 }
@@ -252,10 +253,6 @@ main {
   gap: 16px;
 }
 
-.new-book-card {
-  animation: pop 0.5s;
-}
-
 .book-card-delete {
   display: flex;
   justify-content: end;
@@ -273,18 +270,31 @@ main {
   transform: scale(0.9, 0.9);
 }
 
-.book-card > p {
+.book-card p {
   margin: 0;
 }
 
+.book-card-title-author {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 0 16px 0;
+  border-bottom: var(--border-divider);
+}
+
 .book-card-title {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 600;
+}
+
+.book-card-author {
+  font-size: 0.9rem;
 }
 
 .book-card-pages {
   color: var(--book-card-grey-color);
   font-size: 0.9rem;
+  padding: 0 0 8px 0;
 }
 
 /* Read Status Checkbox */
@@ -327,8 +337,8 @@ main {
 .book-card-read-checkbox {
   top: 0;
   left: 0;
-  width: 1.3em;
-  height: 1.3em;
+  width: 16px;
+  height: 16px;
   background-color: var(--read-status-unchecked-background);
   border: var(--read-status-unchecked-border);
   transition: all 0.3s;
@@ -336,6 +346,7 @@ main {
 
 .book-card-read-container input:checked ~ .book-card-read-checkbox {
   background-color: var(--read-status-checked-background);
+  border: var(--read-status-checked-border);
   animation: pop 0.5s;
   animation-direction: alternate;
 }
@@ -351,10 +362,10 @@ main {
 }
 
 .book-card-read-container .book-card-read-checkbox:after {
-  left: 0.45em;
-  top: 0.25em;
-  width: 0.25em;
-  height: 0.5em;
+  left: 6px;
+  top: 2px;
+  width: 3px;
+  height: 8px;
   border: solid var(--background-color);
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);

@@ -75,59 +75,50 @@ const displayBooks = () => {
   while (bookGrid.firstChild) {
     bookGrid.removeChild(bookGrid.firstChild);
   }
-
   for (let i = 0; i < library.length; i++) {
     const book = library[i];
-    const bookCardContainer = document.createElement('div');
 
+    const bookCardContainer = document.createElement('div');
     const titleTag = document.createElement('p');
     const authorTag = document.createElement('p');
     const pagesTag = document.createElement('p');
-
     const isReadLabel = document.createElement('label');
     const isReadCheckbox = document.createElement('input');
-
     const deleteButton = document.createElement('span');
-
     const isBookReadDiv = document.createElement('div');
     const checkmarkDiv = document.createElement('div');
+    const titleAuthorDiv = document.createElement('div');
 
+    titleAuthorDiv.classList.add('book-card-title-author');
     isBookReadDiv.classList.add('book-card-read-container');
     checkmarkDiv.classList.add('book-card-read-checkbox');
-
     titleTag.classList.add('book-card-title');
     authorTag.classList.add('book-card-author');
     pagesTag.classList.add('book-card-pages');
     isReadLabel.classList.add('book-card-status');
     deleteButton.classList.add('book-card-delete');
     deleteButton.classList.add('material-symbols-rounded');
+    isReadCheckbox.classList.add('book-is-read-checkbox');
+    bookCardContainer.classList.add('book-card');
 
     deleteButton.textContent = 'delete';
-
-    isBookReadDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
-
-    isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
-    isReadLabel.setAttribute('name', 'is_book_read');
-
     isReadLabel.textContent = 'Read';
-    isReadCheckbox.type = 'checkbox';
-    isReadCheckbox.id = `book-is-read-checkbox-${i}`;
-    isReadCheckbox.classList.add('book-is-read-checkbox');
-
-    if (book.isRead === 'yes') isReadCheckbox.checked = true;
-
     titleTag.textContent = book.title;
     authorTag.textContent = `by ${book.author}`;
     pagesTag.textContent = `${parseInt(book.pages)} pages`;
 
-    bookCardContainer.classList.add('book-card');
+    isBookReadDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
+    titleAuthorDiv.append(titleTag, authorTag);
+    isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
+    isReadLabel.setAttribute('name', 'is_book_read');
+    if (book.isRead === 'yes') isReadCheckbox.checked = true;
+    isReadCheckbox.type = 'checkbox';
+    isReadCheckbox.id = `book-is-read-checkbox-${i}`;
 
     bookCardContainer.style.backgroundColor = book.color;
-
     bookCardContainer.append(
       deleteButton,
-      titleTag,
-      authorTag,
+      titleAuthorDiv,
       pagesTag,
       isBookReadDiv
     );
@@ -135,7 +126,6 @@ const displayBooks = () => {
   }
   deleteBook();
   toggleBookReadStatus();
-
   toggleEmptyLibraryMessage();
 };
 
@@ -165,6 +155,10 @@ const addBookToGrid = () => {
   displayBooks();
 };
 
+document
+  .getElementById('year')
+  .appendChild(document.createTextNode(new Date().getFullYear()));
+
 addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
 addBookToLibrary('Meditations', 'Marcus Aurelius', 254, 'no');
 addBookToLibrary(
@@ -185,7 +179,3 @@ document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
 });
-
-document
-  .getElementById('year')
-  .appendChild(document.createTextNode(new Date().getFullYear()));
