@@ -1,20 +1,20 @@
 # Library
 
-A simple library app created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-library).
+A simple library app focused on minimalism and aesthetics with pastel and muted colors. Created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-library).
+
+## [Live Demo](https://emuel-vassallo.github.io/library/)
+
+---
 
 ## Showcase
-
-### Light Theme
-
-![light theme screenshot](images/screenshot-light.png)
 
 ### Dark Theme
 
 ![dark theme screenshot](images/screenshot-dark.png)
 
-## Live Demo
+### Light Theme
 
-👉 **Preview:** https://emuel-vassallo.github.io/library/
+![light theme screenshot](images/screenshot-light.png)
 
 ## Built With
 
@@ -22,7 +22,7 @@ A simple library app created as part of The Odin Project's [curriculum](https://
 - CSS
 - JavaScript
 
-## Lessons Learned
+## What I Learned
 
 - Appending a container with elements using JavaScript
 - Getting a random pastel color and assign it to each book instance

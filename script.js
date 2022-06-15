@@ -33,8 +33,8 @@ const getNewBookModalInfo = () => {
   return dataList;
 };
 
-const addBookToLibrary = (title, author, pages, isRead, color) => {
-  const newBook = new Book(title, author, pages, isRead, color);
+const addBookToLibrary = (title, author, pages, isRead) => {
+  const newBook = new Book(title, author, pages, isRead);
   library = [...library, newBook];
 };
 
@@ -133,10 +133,6 @@ const toggleModal = () => {
   newBookModal.classList.toggle('show-modal');
 };
 
-const windowOnClick = (e) => {
-  if (e.target === newBookModal) toggleModal();
-};
-
 const keyboardKeyPress = (e) => {
   if (e.key === 'Escape') toggleModal();
 };
@@ -147,16 +143,11 @@ const addBookToGrid = () => {
     newBookInfo.book_title,
     newBookInfo.book_author,
     newBookInfo.book_pages,
-    newBookInfo.is_book_read,
-    newBookInfo.color
+    newBookInfo.is_book_read
   );
   toggleModal();
   displayBooks();
 };
-
-document
-  .getElementById('year')
-  .appendChild(document.createTextNode(new Date().getFullYear()));
 
 const addDemoBooksToLibrary = () => {
   addBookToLibrary('The Shining', 'Stephen King', 497, 'yes');
@@ -178,17 +169,19 @@ demoBooksButton.addEventListener('click', () => {
 openModalButton.addEventListener('click', () => toggleModal());
 closeModalButton.addEventListener('click', () => toggleModal());
 
-window.addEventListener('click', windowOnClick);
+window.addEventListener('click', (e) => {
+  if (e.target === newBookModal) toggleModal();
+});
+
 document.body.addEventListener('keydown', (e) => {
   if (newBookModal.classList.contains('show-modal') && e.key == 'Escape')
     toggleModal();
 });
 
-themeToggleSlider.addEventListener('click', () =>
-  document.body.classList.toggle('dark-theme')
-);
+const toggleDarkTheme = () => document.body.classList.toggle('dark-theme');
+themeToggleSlider.addEventListener('click', () => toggleDarkTheme());
+toggleDarkTheme();
 
-if (themeToggleCheckbox.checked) document.body.classList.add('dark-theme');
-else document.body.classList.remove('dark-theme');
-
-displayBooks();
+document
+  .getElementById('year')
+  .appendChild(document.createTextNode(new Date().getFullYear()));
