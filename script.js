@@ -13,7 +13,7 @@ let library = [];
 
 const getRandomHslColor = () =>
   `hsl( ${360 * Math.random()}, ${6 + 12 * Math.random()}%, ${
-    72 + 10 * Math.random()
+    71 + 10 * Math.random()
   }%)`;
 
 function Book(title, author, pages, isRead) {
