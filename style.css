@@ -12,8 +12,8 @@
   --form-submit-background-color: #000000;
   --form-submit-hover-background-color: #2b2a2a;
   --form-close-color: #000000;
-  --form-close-background-color: #ffffff;
-  --form-close-border: 1px solid #cfcfcf;
+  --form-close-background-color: #f3f3f3;
+  --form-close-border: 1px solid #c0c0c0;
   --form-close-hover-background-color: #eaeaea;
   --book-card-color: #000000;
   --book-card-grey-color: #424242;
@@ -48,9 +48,9 @@ body.dark-theme {
   --form-submit-color: #121212;
   --form-submit-background-color: #e3e3e3;
   --form-submit-hover-background-color: #ffffff;
-  --form-close-color: #c0c0c0;
+  --form-close-color: #b0b0b0;
   --form-close-background-color: #121212;
-  --form-close-border: 1px solid #454545;
+  --form-close-border: 1px solid #626262;
   --form-close-hover-background-color: #1f1f1f;
   --book-card-border: #1f1f1f 1px solid;
   --border-divider: 1px solid #505050;
@@ -211,7 +211,7 @@ main {
   height: 100vh;
   opacity: 0;
   visibility: hidden;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   transition: visibility 0s linear 0.25s, opacity 0.15s 0s;
   z-index: 2;
 }
@@ -305,7 +305,7 @@ main {
   background-color: var(--add-demo-books-background);
   color: var(--add-demo-books-color);
   font-size: 1rem;
-  border: 1px solid #a4a4a4;
+  border: var(--form-close-border);
 }
 
 .add-demo-books:hover {

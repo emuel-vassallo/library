@@ -71,9 +71,7 @@ const toggleEmptyLibraryMessage = () => {
 };
 
 const displayBooks = () => {
-  while (bookGrid.firstChild) {
-    bookGrid.removeChild(bookGrid.firstChild);
-  }
+  bookGrid.innerHTML = '';
   for (let i = 0; i < library.length; i++) {
     const book = library[i];
 
