@@ -2,9 +2,7 @@
 
 A simple library app focused on minimalism and aesthetics with pastel and muted colors. Created as part of The Odin Project's [curriculum](https://www.theodinproject.com/lessons/node-path-javascript-library).
 
-## [Live Demo](https://emuel-vassallo.github.io/library/)
-
----
+### [Live Demo](https://emuel-vassallo.github.io/library/)
 
 ## Showcase
 
@@ -21,6 +19,16 @@ A simple library app focused on minimalism and aesthetics with pastel and muted 
 - HTML
 - CSS
 - JavaScript
+
+## Features
+
+- Minimalistic UI
+- Pastel and muted colors
+- Dark/Light theme toggle switch
+- Empty library message
+- Button to add four books for demo purposes
+- Smooth animations and transitions
+- New book modal form
 
 ## What I Learned
 
