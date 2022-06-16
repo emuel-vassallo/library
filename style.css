@@ -381,6 +381,7 @@ main {
   gap: 16px;
   transition: border 0.3s;
   border: var(--book-card-border);
+  max-width: 216px;
 }
 
 .book-card:hover {
@@ -419,10 +420,14 @@ main {
 .book-card-title {
   font-size: 1.42rem;
   font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book-card-author {
   font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .book-card-pages {
@@ -530,6 +535,8 @@ footer {
   justify-content: center;
   align-items: center;
   border-top: var(--border-divider);
+  height: 100px;
+  font-size: 1rem;
 }
 
 footer a {

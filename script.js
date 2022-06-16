@@ -106,6 +106,9 @@ const displayBooks = () => {
     authorTag.textContent = `by ${book.author}`;
     pagesTag.textContent = `${parseInt(book.pages)} pages`;
 
+    titleTag.setAttribute('title', book.title);
+    authorTag.setAttribute('title', book.author);
+
     isBookReadDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
     titleAuthorDiv.append(titleTag, authorTag);
     isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
