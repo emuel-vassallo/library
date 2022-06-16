@@ -7,7 +7,7 @@
   --form-input-color: #000000;
   --form-input-background-color: #e3e3e3;
   --form-input-placeholder-color: #545454;
-  --form-input-focus-outline: 1px solid #dadada;
+  --form-input-focus-outline: 1px solid #cfcfcf;
   --form-submit-color: #ffffff;
   --form-submit-background-color: #000000;
   --form-submit-hover-background-color: #2b2a2a;
@@ -44,7 +44,7 @@ body.dark-theme {
   --form-input-color: #e3e3e3;
   --form-input-background-color: #242424;
   --form-input-placeholder-color: #767676;
-  --form-input-focus-outline: 1px solid #545454;
+  --form-input-focus-outline: 1px solid #454545;
   --form-submit-color: #121212;
   --form-submit-background-color: #e3e3e3;
   --form-submit-hover-background-color: #ffffff;
