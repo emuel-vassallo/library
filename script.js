@@ -11,20 +11,22 @@ const themeToggleCheckbox = document.querySelector('.switch input');
 
 let library = [];
 
-const getRandomHslColor = () =>
-  `hsl( ${360 * Math.random()}, ${6 + 12 * Math.random()}%, ${
-    71 + 10 * Math.random()
-  }%)`;
+class Book {
+  constructor(title, author, pages, isRead) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = isRead;
+    this.color = this.getRandomHslColor();
+  }
 
-function Book(title, author, pages, isRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = isRead;
-  this.color = getRandomHslColor();
+  getRandomHslColor = () =>
+    `hsl( ${360 * Math.random()}, ${6 + 12 * Math.random()}%, ${
+      71 + 10 * Math.random()
+    }%)`;
 }
 
-const getNewBookModalInfo = () => {
+const getNewBookInfoFromModal = () => {
   const formData = new FormData(newBookForm);
   let dataList = {};
   for (const [key, value] of formData) {
@@ -82,12 +84,12 @@ const displayBooks = () => {
     const isReadLabel = document.createElement('label');
     const isReadCheckbox = document.createElement('input');
     const deleteButton = document.createElement('span');
-    const isBookReadDiv = document.createElement('div');
+    const readStatusDiv = document.createElement('div');
     const checkmarkDiv = document.createElement('div');
     const titleAuthorDiv = document.createElement('div');
 
     titleAuthorDiv.classList.add('book-card-title-author');
-    isBookReadDiv.classList.add('book-card-read-container');
+    readStatusDiv.classList.add('book-card-read-container');
     checkmarkDiv.classList.add('book-card-read-checkbox');
     titleTag.classList.add('book-card-title');
     authorTag.classList.add('book-card-author');
@@ -104,24 +106,28 @@ const displayBooks = () => {
     authorTag.textContent = `by ${book.author}`;
     pagesTag.textContent = `${parseInt(book.pages)} pages`;
 
+    readStatusDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
+    titleAuthorDiv.append(titleTag, authorTag);
+
     titleTag.setAttribute('title', book.title);
     authorTag.setAttribute('title', book.author);
-
-    isBookReadDiv.append(isReadCheckbox, isReadLabel, checkmarkDiv);
-    titleAuthorDiv.append(titleTag, authorTag);
     isReadLabel.setAttribute('for', `book-is-read-checkbox-${i}`);
     isReadLabel.setAttribute('name', 'is_book_read');
-    if (book.isRead === 'yes') isReadCheckbox.checked = true;
+
     isReadCheckbox.type = 'checkbox';
     isReadCheckbox.id = `book-is-read-checkbox-${i}`;
 
+    if (book.isRead === 'yes') isReadCheckbox.checked = true;
+
     bookCardContainer.style.backgroundColor = book.color;
+
     bookCardContainer.append(
       deleteButton,
       titleAuthorDiv,
       pagesTag,
-      isBookReadDiv
+      readStatusDiv
     );
+
     bookGrid.append(bookCardContainer);
   }
   deleteBook();
@@ -139,7 +145,7 @@ const keyboardKeyPress = (e) => {
 };
 
 const addBookToGrid = () => {
-  const newBookInfo = getNewBookModalInfo();
+  const newBookInfo = getNewBookInfoFromModal();
   addBookToLibrary(
     newBookInfo.book_title,
     newBookInfo.book_author,
