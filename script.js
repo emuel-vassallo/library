@@ -72,8 +72,12 @@ const toggleEmptyLibraryMessage = () => {
   else noBooksTag.classList.remove('hidden');
 };
 
+const removeAllBooks = () => {
+  while (bookGrid.firstChild) bookGrid.removeChild(bookGrid.lastChild);
+};
+
 const displayBooks = () => {
-  bookGrid.innerHTML = '';
+  removeAllBooks();
   for (let i = 0; i < library.length; i++) {
     const book = library[i];
 
