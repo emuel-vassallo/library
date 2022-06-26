@@ -400,6 +400,7 @@ main {
   align-self: flex-end;
   font-size: 1.3rem;
   color: var(--book-card-grey-color);
+  user-select: none;
 }
 
 .book-card-delete:hover {
