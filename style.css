@@ -72,7 +72,7 @@ body {
   min-height: 100vh;
   background-color: var(--background-color);
   color: var(--color);
-  transition: 0.4s;
+  transition: background 0.4s ease-in-out;
 }
 
 button:active {
@@ -287,7 +287,7 @@ main {
 .add-book-buttons {
   display: flex;
   gap: 16px;
-  height: 48px;
+  min-height: 48px;
 }
 
 .add-book {
@@ -317,7 +317,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 5px;
-  padding: 0 16px;
+  padding: 10px 16px;
   border-radius: var(--border-radius);
   cursor: pointer;
 }
@@ -436,8 +436,6 @@ main {
 
 .book-card-author {
   font-size: 0.9rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .book-card-pages {
@@ -558,4 +556,5 @@ footer p {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  flex-wrap: wrap;
 }
